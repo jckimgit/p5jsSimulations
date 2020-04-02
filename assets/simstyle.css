@@ -1,0 +1,41 @@
+body {position: relative; top: 20px; left: 100px;}
+h1 {font-size: 40px; font-weight: bold; margin: auto; width: 50%; text-align: center;}
+h2 {font-size: 24px; font-weight: bold}
+p {width:450px; text-indent:20px; font-size: 18px; text-align: justify;}
+ul {width:410px; font-size: 18px; text-align: justify;}
+button {font-size: 16px;}
+
+table {width: 30%;}
+td {height: 30px;}
+
+.header {
+  padding: 30px;
+}
+.column {
+  float: left;
+  padding: 30px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.column.side {
+  width: 27%;
+}
+.column.middle {
+  width: 50%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}

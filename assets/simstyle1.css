@@ -1,0 +1,10 @@
+body {position: relative; top: 50px; left: 100px;}
+h1 {font-size: 40px; font-weight: bold; margin: auto; width: 50%; text-align: center;}
+h2 {font-size: 24px; font-weight: bold}
+p {font-size: 18px; text-align: justify;}
+/* p.pSlider {font-size: 24px; position: relative; left: 10px; top: 10px;} */
+ul {font-size: 18px; text-align: justify;}
+button {font-size: 16px;}
+
+table {width: 30%;}
+td {height: 30px;}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="../libraries/p5.js"></script>
+<script type="text/javascript" src="../libraries/p5.dom.js"></script>
+<script type="text/javascript" src="astroid.js"></script>
+
+<head>
+	<title>Astroids</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../assets/simstyle.css">
+</head>
+
+<style>
+body {
+	background-image: url(../assets/light.jpg);
+	background-size: cover;
+}
+</style>
+
+<div class = "header">
+	<h1>Astroids</h1>
+</div>
+
+<body>
+	<div style = "row">
+		<div class = "column side">
+			<h2> Explanations </h2>
+			<p>
+				An astroid is is the locus of a point on a circle as it rolls inside a fixed circle with four times the radius. (Wikipedia) In this simulation, it corresponds to the case when the number of cusps is 4, the number of astroids is one. Other variants can be constructed.
+			</p>
+			<h2> Instructions </h2>
+			<ul>
+				<li> Press 'run' button to start simulation. </li>
+				<li> Press 'r' to restart simulation. </li>
+				<li> Press 'p' to toggle between pause/resume. </li>
+				<li> Press 'c' to show/hide circles. </li>
+				<li> No. of cusps, no. of astroids and horizontal length can be adjusted in the runtime. </li>
+				<li> Symmetry and line checkboxes can be checked/unchecked in the runtime. </li>
+
+			</ul>
+			<h2> Options </h2>
+			<div>
+				<input type="range" min="2" max="16" value="4" id="cusp" style="width: 180px;" > </input>
+				<label style="position: relative; left:10px;"> no. of cusps: <span id="val"> </span> </label>
+			</div>
+			<script>
+			let slider0=document.getElementById("cusp");
+			let output0=document.getElementById("val");
+			output0.innerHTML=slider0.value;
+			slider0.oninput=function() {
+				output0.innerHTML=this.value;
+			}
+			</script>
+			<label style = "font-size: 10px; position: relative; top: -15px"> 2 </label> <label  style = "font-size: 10px; position: relative; left: 165px; top: -15px;"> 16 </label>
+			<br>
+
+			<div>
+				<input type="range" min="1" max="60" value="20" step = "1" id="astroid" style="width: 180px;" > </input>
+				<label style="position: relative; left:10px;"> no. of astroids: <span id="val1"> </span> </label>
+			</div>
+			<script>
+			let slider1=document.getElementById("astroid");
+			let output1=document.getElementById("val1");
+			output1.innerHTML=slider1.value;
+			slider1.oninput=function() {
+				output1.innerHTML=this.value;
+			}
+			</script>
+			<label style = "font-size: 10px; position: relative; top: -15px"> 1 </label> <label  style = "font-size: 10px; position: relative; left: 165px; top: -15px;"> 60 </label>
+			<br>
+
+			<div>
+				<input type="range" min="0.5" max="2" value="1" step = "0.1" id="horiz" style="width: 180px;" > </input>
+				<label style="position: relative; left:10px;"> horizontal length: <span id="val2"> </span> </label>
+			</div>
+			<script>
+			let slider2=document.getElementById("horiz");
+			let output2=document.getElementById("val2");
+			output2.innerHTML=slider2.value;
+			slider2.oninput=function() {
+				output2.innerHTML=this.value;
+			}
+			</script>
+
+			<label style = "font-size: 10px; position: relative; top: -15px"> 0.5 </label> <label  style = "font-size: 10px; position: relative; left: 160px; top: -15px;"> 2 </label>
+			<br><br>
+
+			<label > symmetry </label>
+			<input type=checkbox id="sym" checked> </input>
+			<label > line </label>
+			<input type=checkbox id="lin" checked> </input>
+			<label > random color </label>
+			<input type=checkbox id="rad"> </input>
+		</div>
+
+		<div class = "column middle">
+			<div id="canvas" style="position: relative; top: 80px;">
+				<button id="start" style="position: absolute; top: -50px;" type="button" > run </button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<script language="javascript" type="text/javascript" src="../libraries/toxiclibs.js"></script>
+<script language="javascript" type="text/javascript" src="../libraries/toxichelper.js"></script>
+<script language="javascript" type="text/javascript" src="../libraries/p5.js"></script>
+<script language="javascript" type="text/javascript" src="../libraries/p5.dom.js"></script>
+<script language="javascript" type="text/javascript" src="fourier.js"></script>
+
+<head>
+  <title>Fourier</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../assets/simstyle.css">
+</head>
+
+<style>
+body {
+  background-image: url(../assets/light.jpg);
+  background-size: cover;
+}
+</style>
+
+<div class = "header">
+  <h1>Fourier</h1>
+</div>
+
+<body>
+  <div style = "row">
+    <div class = "column side">
+      <h2> Explanations </h2>
+      <p>
+        A Fourier series is an expansion of a periodic function f(x) in terms of an infinite sum of sines and cosines. (Wolfram MathWorld) Three functions are illustrated:
+        <ul>
+          <li> Box function: f<sub>0</sub>(x) = 1, x  &#8712 [-&#960, 0] and f<sub>0</sub>(x) = 0, x &#8712 [0, &#960]  </li>
+          <li> Linear function: f<sub>1</sub>(x) = x, x &#8712 [-&#960, &#960] </li>
+          <li> Quadratic function: f<sub>2</sub>(x) = x<sup>2</sup>, x &#8712 [-&#960, &#960] </li>
+        </ul>
+      </p>
+
+      <h2> Instructions </h2>
+      <ul>
+        <li> Press 'run' button to start simulation. </li>
+        <li> Press 'r' to restart simulation. </li>
+        <li> Press 'p' to toggle between pause/resume. </li>
+        <li> No. of circles can be adjusted in the runtime. </li>
+        <li> Functions can be switched in the runtime. </li>
+      </ul>
+
+      <h2> Options </h2>
+      <div>
+        <input type="range" min="1" max="50" value="5" step = "1" id="numCircles" style="width: 180px;" > </input>
+        <label style="position: relative; left:10px;"> no. of circles: <span id="val"> </span> </label>
+      </div>
+      <script>
+      let slider=document.getElementById("numCircles");
+      let output=document.getElementById("val");
+      output.innerHTML=slider.value;
+      slider.oninput=function() {
+        output.innerHTML=this.value;
+      }
+      </script>
+      <label style = "font-size: 10px; position: relative; top: -15px"> 1 </label> <label  style = "font-size: 10px; position: relative; left: 165px; top: -15px;"> 50 </label>
+      <br><br>
+
+      <label style = "position: relative; top: -3px;"> box </label>
+      <input type=radio name="function" id="0" checked> </input>
+      <label style = "position: relative; top: -3px;"> linear </label>
+      <input type=radio  name="function" id="1" > </input>
+      <label style = "position: relative; top: -3px;"> quadratic </label>
+      <input type=radio name="function" id="2" > </input>
+    </div>
+
+    <div class="column middle">
+      <div id="canvas" style="position: relative; top: 80px;">
+        <button id="start" style="position: absolute; top: -50px;" type="button" > run </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

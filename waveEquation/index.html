@@ -1,0 +1,102 @@
+<html>
+<script type="text/javascript" src="../libraries/p5.js"></script>
+<script type="text/javascript" src="../libraries/p5.dom.js"></script>
+<script src="waveEquation.js"></script>
+
+<head>
+  <title>Wave Equation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../assets/simstyle.css">
+</head>
+
+<style>
+body {
+  background-image: url(../assets/light.jpg);
+  background-size: cover;
+}
+</style>
+
+<div class = "header">
+  <h1>Wave Equation</h1>
+</div>
+
+<body>
+  <div style = "row">
+    <div class = "column side">
+      <h2> Explanations </h2>
+      <p>
+        One dimensitonal wave propogation described by the wave equation u(x, t) with u<sub>tt</sub>(x, t) = c<sup>2 </sup>u<sub>xx</sub>(x, t) where c = 1 is drawn as t increases. The initial conditions are u(x, 0) = f(x) and u<sub>t</sub>(x, 0) = 0. Two cases, bounded and unbounded, are considered: (i) 0 &#8806 x &#8806 L < &#8734 where the boundary conditions are u(0, t) = u(L, t) = 0 and (ii) -&#8734 < x < &#8734 where no boundary conditions are imposed. </p> <p>  For the bounded case, f(x) is either Gaussian, of a box form or of a triangular form for a certain range of x. For the unbounded case, f(x) is either a cosine function (f(x) = 50 cos(2&#960x/L), a sine function (f(x) = 75sin(4&#960x/L + &#960/4)) or the average of them. D'Alembert solutions for both cases are illustrated. In particular, the former case turns out to be equivalent to the latter case where f(x) is replaced with F(x), which is an an odd and periodic extension of f(x) over an infinite horizon.
+      </p>
+      <h2> Instructions </h2>
+      <ul>
+        <li> Press 'run' button to start simulation. </li>
+        <li> Press 'r' to restart simulation. </li>
+        <li> Press 'p' to toggle between pause/resume. </li>
+        <li> You can choose any option in the runtime. </li>
+      </ul>
+      <h2> Options </h2>
+      <div>
+        <input type="range" min="0" max="1" value="0.5" step = "0.1" id="speed" style="width: 180px;" > </input>
+        <label style="position: relative; left:10px;"> speed: <span id="val"> </span> </label>
+      </div>
+
+      <script>
+      let slider=document.getElementById("speed");
+      let output=document.getElementById("val");
+      output.innerHTML=slider.value;
+      slider.oninput=function() {
+        output.innerHTML=this.value;
+      }
+      </script>
+
+      <label style = "font-size: 10px; position: relative; top: -15px"> 0 </label> <label  style = "font-size: 10px; position: relative; left: 165px; top: -15px;"> 1 </label>
+      <br>
+
+      <div>
+        <!-- <label > show extension </label>
+        <input type=checkbox id="ext"> </input>
+        <br><br> -->
+        <div >
+          <div  id="divShape0" style="position: relative; top: 0px; left: 0px">
+            <label > bounded </label>
+            <input type=radio id="boundary" name="side" checked> </input>
+            <div id="divShape1" style="position: relative; top: -23px; left: 150px">
+              <label > Gaussian </label>
+              <input type=radio  name="func0" id="Gaussian" checked> </input>
+              <label> box </label>
+              <input type=radio name="func0" id="box0" > </input>
+              <label> triangle </label>
+              <input type=radio name="func0" id="triangle0" > </input>
+            </div>
+            <div id="divShape2" style="position: relative; top: -20px; left: 150px">
+              <label > show F(x)</label>
+              <input type=checkbox id="ext"> </input>
+            </div>
+          </div>
+
+          <div id="divShape3" style="position: relative; top: 0px; left: 0px">
+            <label > unbounded </label>
+            <input type=radio id="noBoundary" name="side"> </input>
+            <div  id="divShape4" style="position: relative; top: -23px; left: 150px">
+              <label > cosine </label>
+              <input type=radio  name="func" id="cosine" checked> </input>
+              <label> sine </label>
+              <input type=radio name="func" id="sine" > </input>
+              <label> mix </label>
+              <input type=radio name="func" id="mix" > </input>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div class="column middle">
+      <div id="canvas" style="position: relative; top: 80px;">
+        <button id="start" style="position: absolute; top: -50px;" type="button" > run </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
