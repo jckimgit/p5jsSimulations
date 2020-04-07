@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<script language="javascript" type="text/javascript" src="../libraries/p5.js"></script>
+<script language="javascript" type="text/javascript" src="../libraries/p5.dom.js"></script>
+<script language="javascript" type="text/javascript" src="hilbert.js"></script>
+
+<head>
+  <title>Hilbert Curve</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../assets/simstyle.css">
+</head>
+
+<style>
+  body {
+    background-image: url(../assets/light.jpg);
+    background-size: cover;
+  }
+</style>
+
+<div class="header">
+  <h1>Hilbert Curve</h1>
+</div>
+
+<body>
+  <div style="row">
+    <div class="column side">
+      <h2> Desctiption </h2>
+      <p>
+        A "matrix" approach is used to draw a Hilbert curve (also known as a Hilbert space-filling curve), which is a
+        continuous fractal space-filling curve first
+        described by the German mathematician David Hilbert. (Wikipedia)
+      </p>
+
+      <h2> Instructions </h2>
+      <ul>
+        <li> Press 'run' button to start simulation. </li>
+        <!-- <li> Press 'r' to re-draw Hilbert curve, which is useful when random effects are present. </li> -->
+
+        <li> Press 'p' to toggle between pause/resume. </li>
+      </ul>
+
+      <h2> Options </h2>
+      <div>
+        <input type="range" min="1" max="8" value="5" id="order" style="width: 180px;"> </input>
+        <label style="position: relative; left:10px;"> order: <span id="val"> </span> </label>
+      </div>
+
+      <script>
+        let slider0 = document.getElementById("order");
+        let output0 = document.getElementById("val");
+        output0.innerHTML = slider0.value;
+        slider0.oninput = function () {
+          output0.innerHTML = this.value;
+        }
+      </script>
+
+      <label style="font-size: 10px; position: relative; top: -10px"> 1 </label> <label
+        style="font-size: 10px; position: relative; left: 170px; top: -10px;"> 8 </label>
+      <br> <br>
+
+      <div>
+        <div>
+          <input type="range" min="0" max="5" value="0" step="0.1" id="randomness" style="width: 180px;"> </input>
+          <label style="position: relative; left:10px;"> randomness: <span id="val1"> </span> </label>
+        </div>
+
+        <script>
+        let  slider1 = document.getElementById("randomness");
+        let  output1 = document.getElementById("val1");
+          output1.innerHTML = slider1.value;
+          slider1.oninput = function () {
+            output1.innerHTML = this.value;
+          }
+        </script>
+
+        <label style="font-size: 10px; position: relative; top: -10px"> 0 </label> <label
+          style="font-size: 10px; position: relative; left: 165px; top: -10px;"> 5 </label>
+        <br> <br>
+      </div>
+
+      <div>
+        <label> square </label>
+        <input type=radio name="shape" id="s0" checked> </input>
+        <label> triangle </label>
+        <input type=radio name="shape" id="s1"> </input>
+      </div>
+      <br>
+      <div>
+        <label> all-at-once </label>
+        <input type=radio name="drawingType" id="d0" checked> </input>
+        <label> successive </label>
+        <input type=radio name="drawingType" id="d1"> </input>
+      </div>
+    </div>
+    <div class="column middle">
+      <div id="canvas" style="position: relative; top: 80px;">
+        <button id="run" style="position: absolute; top: -50px;" type="button"> run </button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
