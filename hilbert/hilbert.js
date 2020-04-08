@@ -9,19 +9,18 @@ let numStop = 0; // # of successive lines drawn
 let hMatrixGenerated = false;
 let converted = false;
 let pause = true;
-let init = 0;
 let initTime;
 let cnv;
 
 function setup() {
     cnv = createCanvas(600, 600);
     cnv.parent('canvas');
+    let button = select('#run');
+    button.mousePressed(run);
 }
 
 function draw() {
     background(0);
-    let button = select('#run');
-    button.mousePressed(run);
     if (!pause) {
         strokeWeight(1);
         revs = [];
@@ -33,45 +32,37 @@ function draw() {
 }
 
 function run() {
-    if (init == 0) {
-        let slider = select('#order');
-        order = slider.elt.value;
-        select('#order').elt.disabled = true;
-        slider = select('#randomness');
-        randomness = slider.elt.value;
-        select('#randomness').elt.disabled = true;
-        let square0 = select('#s0');
-        let triangle = select('#s1');
-        square = (square0.elt.checked) ? square = true : square = false;
-        let allAtOnce = select('#d0');
-        let successive = select('#d1');
-        drawingType = (allAtOnce.elt.checked) ? 0 : 1;
-        square0.elt.disabled = true;
-        triangle.elt.disabled = true;
-        allAtOnce.elt.disabled = true;
-        successive.elt.disabled = true;
-
-        off = width * 0.05;
-        size = (width - 2 * off) / (pow(2, order) - 1);
-        generateHMatrix(order);
-        if (converted) {
-            hMatrix = [];
-        }
-        select('#run').elt.disabled = true;
-        pause = false;
-        init++;
-        initTime = frameCount;
+    let slider = select('#order');
+    order = slider.elt.value;
+    select('#order').elt.disabled = true;
+    slider = select('#randomness');
+    randomness = slider.elt.value;
+    select('#randomness').elt.disabled = true;
+    let square0 = select('#s0');
+    let triangle = select('#s1');
+    square = (square0.elt.checked) ? square = true : square = false;
+    let allAtOnce = select('#d0');
+    let successive = select('#d1');
+    drawingType = (allAtOnce.elt.checked) ? 0 : 1;
+    square0.elt.disabled = true;
+    triangle.elt.disabled = true;
+    allAtOnce.elt.disabled = true;
+    successive.elt.disabled = true;
+    off = width * 0.05;
+    size = (width - 2 * off) / (pow(2, order) - 1);
+    generateHMatrix(order);
+    if (converted) {
+        hMatrix = [];
     }
-    
+    select('#run').elt.disabled = true;
+    pause = false;
+    initTime = frameCount;
 }
 
 function keyPressed() {
     if (key == 'R') {
         background(0);
         draw();
-    }
-    if (key == 'P') {
-        pause = !pause;
     }
 }
 
@@ -209,7 +200,7 @@ function triangularize() {
 }
 
 function drawLines() {
-    let len = (drawingType == 0) ? positions.length : frameCount - initTime; 
+    let len = (drawingType == 0) ? positions.length : frameCount - initTime;
     for (let i = 0; i < len - 1; i++) {
         let iprime = i % 4;
         let from = color(255);
